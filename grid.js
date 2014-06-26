@@ -1,14 +1,3 @@
-jQuery(function($){
-	var $rows = $(".test > .row")
-	$rows.width($rows[0].scrollWidth);
-	$rows.each(function(){
-		this.children.item(0).innerHTML = this.scrollWidth + "x" + this.scrollHeight;
-		console.debug("0:" + this.clientWidth + "," + this.scrollWidth);
-		//this.style.width  = this.scrollWidth + "px";
-		//console.debug("1:" + this.clientWidth + "," + this.scrollWidth);
-	})
-});
-
 function gridCtrl($scope) {
 	$scope.columnSize = 2;
 	$scope.rows = [["11", "12"],["21", "22"]];
