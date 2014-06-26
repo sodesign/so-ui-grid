@@ -1,10 +1,10 @@
 <!doctype html>
-<html ng-app>
+<html>
 <head>
 	<meta charset='utf-8'>
 	<link rel="stylesheet" type="text/css" href="grid.css">
 </head>
-<body>
+<body ng-app="myModule">
 <div ng-controller="gridCtrl">
 	<button ng-click="addRow()">+Row</button>
 	<button ng-click="deleteRow()">-Row</button>
@@ -17,6 +17,15 @@
 		</div>
 	</div>
 </div>
+
+<button add-book-button>Add book</button>
+<div ng-controller='booksCtrl'>
+	<button ng-click="removeBook()">Remove book</button>Total {{books.length}} books:
+	<ul>
+		<li ng-repeat="b in books">title: "{{b.title}}", author: "{{b.author}}"</li>
+	</ul>
+</div>
+
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="grid.js"></script>
 </body>
