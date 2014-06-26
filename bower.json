@@ -1,0 +1,11 @@
+{
+  "name": "so-ui-grid",
+  "description": "Grid",
+  "version": "0.1.0",
+  "homepage": "https://github.com/sodesign/so-ui-grid.git",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.x"
+  }
+}
