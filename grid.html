@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Div Grid</title>
+	<link rel="stylesheet" type="text/css" href="grid.css">
+	<style type="text/css">
+		div.container{
+			width: 550px;
+			height: 200px;
+			overflow: auto;
+			border: 1px solid black;
+			padding: 10px;
+		}
+		table{
+			border-collapse: collapse;
+			width: 600px;
+			height: 200px;
+			table-layout: fixed;
+			overflow:hidden; 
+			/*white-space: nowrap;*/
+		}
+		thead{
+			/*position: fixed;*/
+		}
+		tbody{
+			overflow: auto; 
+		}
+		col{
+			width: 200px;
+		}
+		col:last-child{
+			width: auto;
+		}
+		th, td{
+			border: 1px solid black;
+			overflow: hidden;
+    	/*white-space:nowrap;*/
+    	text-overflow: ellipsis; 
+    	word-wrap: break-word;
+			word-break:break-all;
+		}
+		tr, td{
+			min-height: 20px;
+			max-height: 50px;
+			overflow: hidden;
+			/*position: relative;*/
+			display: fixed;
+		}
+
+		div.incell{
+			background-color: gray;
+			position: relative;
+			max-height: 40px;
+			overflow: auto;
+    	text-overflow: ellipsis; 
+    	word-wrap: break-word;
+			word-break: break-all;
+			/*white-space: nowrap;*/
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<table>
+		<colgroup>
+			<col>
+	    <col>
+	    <col>
+    </colgroup>
+		<thead>
+			<tr>
+				<th>C1</th>
+				<th>C2</th>
+				<th>C3</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>11</td>
+				<td>21</td>
+				<td>31</td>
+			</tr>
+			<tr>
+				<td><div class="incell">12 long text 长长的</div></td>
+				<td><div class="incell">22 long text 长长的要换行的节奏哦！ 长长的要换行的节奏哦！ 长长的要换行的节奏哦！</div></td>
+				<td>32</td>
+			</tr>
+			<tr>
+				<td>13</td>
+				<td>23 long text 长长的要换行的节奏哦！</td>
+				<td>33</td>
+			</tr>
+			<tr>
+				<td>13</td>
+				<td>23 long text 长长的要换行的节奏哦！</td>
+				<td>33</td>
+			</tr>
+			<tr>
+				<td>13</td>
+				<td>23 long text 长长的要换行的节奏哦！</td>
+				<td>33</td>
+			</tr>
+			<tr>
+				<td>13</td>
+				<td>23 long text 长长的要换行的节奏哦！</td>
+				<td>33</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

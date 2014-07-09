@@ -2,29 +2,39 @@
 <html>
 <head>
 	<meta charset='utf-8'>
+	<title>Div Grid</title>
 	<link rel="stylesheet" type="text/css" href="grid.css">
 </head>
-<body ng-app="myModule">
-<div ng-controller="gridCtrl">
-	<button ng-click="addRow()">+Row</button>
-	<button ng-click="deleteRow()">-Row</button>
-	<button ng-click="addColumn()">+Column</button>
-	<button ng-click="deleteColumn()">-Column</button>
+<body>
+<div ng-app="grid" ng-controller="gridCtrl">
+	<div>
+		<button ng-click="addRow()">+Row</button>
+		<button ng-click="deleteRow()">-Row</button>
+		<button ng-click="addColumn()">+Column</button>
+		<button ng-click="deleteColumn()">-Column</button>
+	</div>
+	<div>
+		Title: <input ng-model="title"> Author: <input ng-model="author">
+	</div>
 
 	<div class="grid vlayout" style="width:600px">
-		<div class="row unflex hlayout" ng-repeat="row in rows">
-			<div class="column unflex" ng-repeat="column in row">{{row[$index]}}</div>
+		<div class="row unflex hlayout" ng-repeat="row in rows" ng-click="toggleRowSelect()">
+			<div class="column unflex" ng-repeat="column in row" style="">{{row[$index]}}</div>
 		</div>
 	</div>
 </div>
 
-<button add-book-button>Add book</button>
-<div ng-controller='booksCtrl'>
-	<button ng-click="removeBook()">Remove book</button>Total {{books.length}} books:
-	<ul>
-		<li ng-repeat="b in books">title: "{{b.title}}", author: "{{b.author}}"</li>
-	</ul>
-</div>
+<grid columns="['id', {name: 'title', width: '6em'}, 'author']"
+	data="[[1, 'Book1', 'Dragon'], [2, 'Book2', 'David']]">
+</grid>
+
+<grid data="UserService.users" pagable="true" row-min-height="2" row-max-height="4">
+	<columns unit="em">
+		<column name="id" width="2" data-type="int" ></column>
+		<column name="title" width="6"></column>
+		<column name="author" width="10"></column>
+	</columns>
+</grid>
 
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="grid.js"></script>

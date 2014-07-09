@@ -1,0 +1,71 @@
+/** 容器 */
+.grid{
+	overflow: hidden;
+	box-sizing: border-box;
+
+	/* vlayout */
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+.grid *{
+	box-sizing: border-box;
+}
+.grid .header > table, .grid .body > table{
+	table-layout: fixed;
+	border-spacing: 0;
+	border: none;
+	empty-cells: show;
+	border-collapse: collapse;
+}
+.grid .header {
+	align-self: stretch;
+	flex: none;
+}
+.grid .body {
+	align-self: stretch;
+	flex: auto;
+}
+
+/** 公共 */
+.grid .row{
+	min-height: 30px;
+}
+.grid .cell{
+	border: 1px solid #ccc;
+	padding: 2px;
+}
+.grid .cell.last{
+	border-right: none;
+}
+.grid .cell.empty{
+	min-width: 1px;
+	padding: 0;
+}
+.grid .cell:last-child{
+	border-left: none;
+	/*background-color: #ddd;*/
+}
+
+/** 列头 */
+.grid > .header{
+	overflow: hidden;
+	font-weight: bold;
+}
+.grid > .header > table{
+	background-color: #eef;
+}
+
+/** 数据 */
+.grid > .body{
+	overflow: auto;
+}
+.grid > .body .row:first-child > .cell{
+	border-top: none;
+}
+.grid .cell > .fill{
+	height: 100%;
+	min-height: 26px;
+}

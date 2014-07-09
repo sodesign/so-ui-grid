@@ -54,10 +54,13 @@
 .grid > .row > .column{
 	border-right: 1px solid blue;
 	border-bottom: 1px solid blue;
-	min-width: 100px;
-	min-height: 100px;
+	width: 100px;
+	min-height: 20px;
 	background-color: #ccc;
 	height: 100%;
+	overflow: hidden;
+	/*text-overflow: ellipsis;*/
+	/*white-space: nowrap;*/
 }
 .grid > .row > .column:last-child{
 	border-right: none;

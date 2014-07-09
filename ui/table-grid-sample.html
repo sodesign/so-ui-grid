@@ -1,0 +1,50 @@
+<!doctype html>
+<html ng-app>
+<head>
+	<meta charset='utf-8'>
+	<title>Table Grid Sample</title>
+	<link rel="stylesheet" type="text/css" href="table-grid.css">
+	<style type="text/css">
+		.sample{
+			width: 400px;
+			max-height: 250px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<h1>Table Grid Sample</h1>
+
+	<div class="grid sample" ng-controller="TableGridCtrl">
+		<div class="header">
+			<table style="width: {{totalWidth}}{{unit}}">
+				<colgroup>
+					<col ng-repeat="c in columns" style="width: {{c.width}}{{unit}}"/>
+		    </colgroup>
+				<thead>
+					<tr class="row">
+						<th class="cell{{columns.length - 1 == $index ? ' last' : ''}}" ng-repeat="c in columns" data-id="{{c.id}}">{{c.name}}</th>
+						<th class="cell empty"></th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="body">
+			<table style="width: {{totalWidth}}{{unit}}">
+				<colgroup>
+					<col ng-repeat="c in columns" style="width: {{c.width}}{{unit}}"/>
+		    </colgroup>
+				<tbody>
+					<tr class="row" ng-repeat="r in rows">
+						<td class="cell{{columns.length - 1 == $index ? ' last' : ''}}" ng-repeat="c in columns">{{r[c.id]}}</td>
+						<td class="cell empty"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<script src="../bower_components/angular/angular.min.js"></script>
+	<script src="table-grid.js"></script>
+</body>
+</html>

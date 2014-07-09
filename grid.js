@@ -1,4 +1,4 @@
-function gridCtrl($scope) {
+function gridCtrl1($scope) {
 	$scope.columnSize = 2;
 	$scope.rows = [["11", "12"],["21", "22"]];
 
@@ -37,49 +37,61 @@ function gridCtrl($scope) {
 }
 
 // -------------------------------------------------------
-var module = angular.module("myModule", []);
+var module = angular.module("grid", []);
 
 // service
 module.service('bookService', ['$rootScope', function($rootScope) {
 	var service = {
 		books: [
-			{ id: 1, title: "Magician", author: "Raymond E. Feist" },
-			{ id: 2, title: "The Hobbit", author: "J.R.R Tolkien" }
+			[1, "Magician", "Raymond E. Feist"],
+			[2, "The Hobbit Hobbit", "J.R.R Tolkien"]
 		],
 
-		addBook: function (book) {
-			console.debug("addBook");
+		add: function (book) {
+			console.debug("bookService.add:" + book);
 			service.books.push(book);
-			$rootScope.$broadcast('books.update');
+			$rootScope.$broadcast('books.add');
 		},
 
-		removeBook: function (id) {
-			console.debug("removeBook: id=" + id);
+		remove: function (id) {
 			for (var i = 0; i < service.books.length; i++) {
-				if(service.books[i].id == id) service.books.splice(i, 1);
+				if(service.books[i][0] == id){
+					console.debug("bookService.remove:" + book);
+					service.books.splice(i, 1);
+				}
 				$rootScope.$broadcast('books.remove');
 			};
 		}
 	}
 	return service;
-}]);
+}])
 
-module.controller("booksCtrl", ['$scope','bookService', function($scope, bookService) {
-	$scope.name = "booksCtrl";
-	$scope.$on('books.update', function(event) {
-		$scope.books = bookService.books;
-		$scope.$apply();//注意，原文这里少了这一行
+// controler
+.controller("gridCtrl", ['$scope','bookService', function($scope, bookService) {
+	$scope.name = "gridCtrl";
+	$scope.$on('books.add', function(event) {
+		$scope.rows = bookService.books;
+		//$scope.$apply();//注意，原文这里少了这一行
 	}); 
-	$scope.books = bookService.books;
-	console.debug($scope.books.length);
+	$scope.rows = bookService.books;
+	$scope.newId = function(){
+		return bookService.books.length + 1;
+	};
 
-	$scope.removeBook = function(){
-		$scope.books.pop();
-		console.debug("removeBook:" + $scope.books.length + "," + bookService.books.length);
-	}
+	$scope.addRow = function(){
+		bookService.add([$scope.newId(), $scope.title, $scope.author]);
+		//$scope.title = "";
+		//$scope.author = "";
+	};
+
+	$scope.toggleRowSelect = function(){
+		console.debug("toggleRowSelect");
+	};
 }]);
 
-module.directive("addBookButton", ['bookService', function(bookService) {
+/*
+// directive
+.directive("addBookButton", ['bookService', function(bookService) {
 	return {
 		restrict: "A",
 		link: function(scope, element, attrs) {
@@ -89,3 +101,4 @@ module.directive("addBookButton", ['bookService', function(bookService) {
 		}
 	}
 }]);
+*/
