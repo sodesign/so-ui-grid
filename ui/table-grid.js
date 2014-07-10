@@ -1,8 +1,8 @@
 "use strict";
 function TableGridCtrl($scope) {
 	$scope.unit = "px";
-	var columnSize = 10;
-	var rowSize = 21
+	var columnSize = 40;
+	var rowSize = 15;
 
 	$scope.columns = [];
 	var w = 0;
@@ -31,3 +31,12 @@ function TableGridCtrl($scope) {
 		$scope.rows.push(r);
 	};
 }
+
+var $gb = angular.element(".body");
+var $gh = angular.element(".header");
+var $ght = $gh.children();
+$gb.on("scroll", function(e){
+	//console.log(this.scrollLeft + ":" + $gh[0].scrollLeft);
+	$ght[0].style.left = (-this.scrollLeft) + "px";
+	//console.log(this.scrollLeft + ":" + $gh[0].scrollLeft);
+});

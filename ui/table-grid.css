@@ -19,6 +19,7 @@
 	border: none;
 	empty-cells: show;
 	border-collapse: collapse;
+	position: relative;
 }
 .grid .header {
 	align-self: stretch;

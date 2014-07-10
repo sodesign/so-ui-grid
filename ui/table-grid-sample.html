@@ -7,7 +7,7 @@
 	<style type="text/css">
 		.sample{
 			width: 400px;
-			max-height: 250px;
+			height: 250px;
 			border: 1px solid #000;
 		}
 	</style>
@@ -17,9 +17,9 @@
 
 	<div class="grid sample" ng-controller="TableGridCtrl">
 		<div class="header">
-			<table style="width: {{totalWidth}}{{unit}}">
+			<table ng-style="{'width': totalWidth + unit}">
 				<colgroup>
-					<col ng-repeat="c in columns" style="width: {{c.width}}{{unit}}"/>
+					<col ng-repeat="c in columns" ng-style="{'width': c.width + unit}"/>
 		    </colgroup>
 				<thead>
 					<tr class="row">
@@ -30,9 +30,9 @@
 			</table>
 		</div>
 		<div class="body">
-			<table style="width: {{totalWidth}}{{unit}}">
+			<table ng-style="{'width': totalWidth + unit}">
 				<colgroup>
-					<col ng-repeat="c in columns" style="width: {{c.width}}{{unit}}"/>
+					<col ng-repeat="c in columns" ng-style="{'width': c.width + unit}"/>
 		    </colgroup>
 				<tbody>
 					<tr class="row" ng-repeat="r in rows">
@@ -44,6 +44,7 @@
 		</div>
 	</div>
 
+	<script src="../bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="../bower_components/angular/angular.min.js"></script>
 	<script src="table-grid.js"></script>
 </body>
