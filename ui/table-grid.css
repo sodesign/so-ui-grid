@@ -37,6 +37,10 @@
 .grid .cell{
 	border: 1px solid #ccc;
 	padding: 2px;
+	white-space: normal;
+	overflow: auto;
+	word-wrap: break-word;
+	word-break: break-all;
 }
 .grid .cell.last{
 	border-right: none;
