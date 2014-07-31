@@ -1,0 +1,33 @@
+<!doctype html>
+<html ng-app="myapp">
+<head>
+	<meta charset='utf-8'>
+	<title>Simple Grid Demo</title>
+	<link rel="stylesheet" type="text/css" href="table-grid.css">
+	<style type="text/css">
+		body{
+			background-color: #2B2B2B;
+			color: #81B696;
+		}
+		.demo{
+			background-color: #3C3F41;
+			width: 400px;
+			height: 250px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<h1>Simple Grid Sample</h1>
+
+	<grid ng-controller="DemoController" class="demo" unit="em">
+		<column width="2" label="&nbsp;"/>
+		<column width="10" label="姓名"/>
+		<column width="8" label="账号"/>
+	</grid>
+
+	<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="../bower_components/angular/angular.min.js"></script>
+	<script src="grid.js"></script>
+</body>
+</html>
